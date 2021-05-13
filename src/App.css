@@ -1,1 +1,21 @@
 /* Other rules */
+
+* {
+  box-sizing: border-box;
+}
+
+.characterSheet {
+  background-color: aquamarine;
+}
+
+.characterSheet > img {
+  width: 200px;
+}
+
+.comicSheet > img {
+  width: 200px;
+}
+
+.comicSheet {
+  background-color: cadetblue;
+}
