@@ -5,6 +5,8 @@ import Characters from "./containers/Characters";
 import Header from "./containers/Header";
 import Comics from "./containers/Comics";
 import CharComicsList from "./containers/CharComicsList";
+import Favorites from "./containers/Favorites";
+import Cookies from "js-cookie";
 import axios from "axios";
 
 function App() {
@@ -12,6 +14,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [name, setName] = useState();
   const [skip, setSkip] = useState(0);
+  const [cookie, setCookie] = useState(Cookies.get("marvelFavorites" || 0));
 
   const [url, setUrl] = useState(`http://localhost:3001/characters?`);
 
@@ -55,6 +58,10 @@ function App() {
           <Comics />
         </Route>
 
+        <Route path={"/favorites"}>
+          <Favorites cookie={cookie} />
+        </Route>
+
         <Route path={"/"}>
           <Characters
             data={data}
@@ -65,6 +72,8 @@ function App() {
             url={url}
             skip={skip}
             setSkip={setSkip}
+            cookie={cookie}
+            setCookie={setCookie}
           />
         </Route>
       </Switch>

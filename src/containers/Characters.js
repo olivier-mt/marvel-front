@@ -1,6 +1,6 @@
 import CharacterSheet from "../Components/CharacterSheet";
 
-const Characters = ({ data, setName, skip, setSkip }) => {
+const Characters = ({ data, setName, skip, setSkip, cookie, setCookie }) => {
   const handleOnClickPlus = () => {
     setSkip(skip + 5);
     // setUrl(baseUrl);
@@ -36,6 +36,8 @@ const Characters = ({ data, setName, skip, setSkip }) => {
       </form>
       {/* -------*/}
 
+      {/* MAP ON DATA TO GET ALL CHARACTERS */}
+
       {data.results.map((elem, index) => {
         return (
           <CharacterSheet
@@ -44,6 +46,8 @@ const Characters = ({ data, setName, skip, setSkip }) => {
             description={elem.description}
             picture={`${elem.thumbnail.path}.${elem.thumbnail.extension}`}
             id={elem._id}
+            cookie={cookie}
+            setCookie={setCookie}
           />
         );
       })}

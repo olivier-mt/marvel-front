@@ -3,7 +3,7 @@ const Header = () => {
   return (
     <div>
       <Link to="/">Personnages</Link> <Link to="/comics">Comics</Link>
-      <button>Favoris</button>
+      <Link to="/favorites">Favoris</Link>
     </div>
   );
 };
