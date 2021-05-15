@@ -10,21 +10,36 @@ import axios from "axios";
 function App() {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [name, setName] = useState();
+  const [skip, setSkip] = useState(0);
+
+  const [url, setUrl] = useState(`http://localhost:3001/characters?`);
 
   useEffect(() => {
+    const baseUrl = name
+      ? `http://localhost:3001/characters?skip=${skip}&name=${name}`
+      : `http://localhost:3001/characters?skip=${skip}`;
+
+    setUrl(baseUrl);
+
     const fetchData = async () => {
+      // setIsLoading(true);
       try {
-        const response = await axios.get("http://localhost:3001/characters");
+        const response = await axios.get(url);
+
+        console.log(response.data);
+        console.log("skip", skip);
 
         setData(response.data);
         setIsLoading(false);
+        console.log("feteched !");
       } catch (error) {
         console.log(error.message);
       }
     };
 
     fetchData();
-  }, []);
+  }, [skip, url, name]);
 
   return isLoading ? (
     <span>isLoading</span>
@@ -41,7 +56,16 @@ function App() {
         </Route>
 
         <Route path={"/"}>
-          <Characters data={data} />
+          <Characters
+            data={data}
+            setName={setName}
+            setData={setData}
+            name={name}
+            setUrl={setUrl}
+            url={url}
+            skip={skip}
+            setSkip={setSkip}
+          />
         </Route>
       </Switch>
     </Router>
