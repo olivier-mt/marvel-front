@@ -10,6 +10,7 @@ const CharacterSheet = ({
   id,
   cookie,
   setCookie,
+  key,
 }) => {
   const [toFav, setToFav] = useState(false);
 
@@ -23,7 +24,7 @@ const CharacterSheet = ({
     };
 
     checkFav();
-  }, [cookie, id]);
+  }, [cookie, id, toFav]);
 
   const handleAddToCookies = () => {
     const newCookie = cookie ? JSON.parse(cookie) : [];
@@ -42,8 +43,22 @@ const CharacterSheet = ({
     Cookies.set("marvelFavorites", newCookie);
   };
 
+  const handleRemoveFromCookies = () => {
+    const newCookie = JSON.parse(cookie);
+
+    newCookie.map((elem, index) => {
+      if (elem.id === id) {
+        newCookie.splice(index, 1);
+      }
+    });
+
+    setCookie(JSON.stringify(newCookie));
+    Cookies.set("marvelFavorites", newCookie);
+    setToFav(false);
+  };
+
   return (
-    <div className="characterSheet">
+    <div className="characterSheet" key={key} id={id}>
       <Link to={`/comics/${id}`}>
         <p>{name}</p>
         <p>{cookie}</p>
@@ -56,7 +71,7 @@ const CharacterSheet = ({
         <input
           type="button"
           value="retirer des favoris"
-          onClick={handleAddToCookies}
+          onClick={handleRemoveFromCookies}
         />
       ) : (
         <input

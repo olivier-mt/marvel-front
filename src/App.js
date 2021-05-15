@@ -42,7 +42,7 @@ function App() {
     };
 
     fetchData();
-  }, [skip, url, name]);
+  }, [skip, url, name, cookie]);
 
   return isLoading ? (
     <span>isLoading</span>
@@ -59,7 +59,7 @@ function App() {
         </Route>
 
         <Route path={"/favorites"}>
-          <Favorites cookie={cookie} />
+          <Favorites cookie={cookie} setCookie={setCookie} />
         </Route>
 
         <Route path={"/"}>

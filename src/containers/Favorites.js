@@ -1,7 +1,7 @@
 import CharacterSheet from "../Components/CharacterSheet";
 import { useState, useEffect } from "react";
 
-const Favorites = ({ cookie }) => {
+const Favorites = ({ cookie, setCookie }) => {
   const Tab = cookie ? cookie.slice() : [];
   const newTab = cookie ? JSON.parse(Tab) : [];
 
@@ -15,9 +15,10 @@ const Favorites = ({ cookie }) => {
             name={elem.name}
             description={elem.description}
             picture={elem.picture}
-            key={elem.id}
+            key={index}
             id={elem.id}
             cookie={cookie}
+            setCookie={setCookie}
           />
         );
       })}
