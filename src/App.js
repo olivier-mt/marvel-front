@@ -15,7 +15,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [name, setName] = useState();
   const [skip, setSkip] = useState(0);
-  const [cookie, setCookie] = useState(Cookies.get("marvelFavorites" || []));
+  const [cookie, setCookie] = useState(Cookies.get("marvelFavorites" || 0));
 
   const [url, setUrl] = useState(
     `https://marvel-oliver.herokuapp.com/characters?`
