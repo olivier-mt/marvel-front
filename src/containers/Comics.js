@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import CharacterSheet from "../Components/CharacterSheet";
 import ComicSheet from "../Components/ComicSheet";
+import Cookies from "js-cookie";
 
 const Comics = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -8,6 +10,7 @@ const Comics = () => {
   const [url, setUrl] = useState("http://localhost:3001/comics?");
   const [skip, setSkip] = useState(0);
   const [title, setTitle] = useState();
+  const [cookie, setCookie] = useState(Cookies.get("favMarvelComics") || 0);
 
   const handleOnSearch = (event) => {
     setTitle(event.target.value);
@@ -32,7 +35,7 @@ const Comics = () => {
     } catch (error) {
       console.log(error.message);
     }
-  }, [url, title, skip]);
+  }, [url, title, skip, cookie]);
 
   return isLoading ? (
     <span>is Loading</span>
@@ -80,7 +83,10 @@ const Comics = () => {
             title={elem.title}
             picture={`${elem.thumbnail.path}.${elem.thumbnail.extension}`}
             key={elem._id}
+            id={elem._id}
             description={elem.description}
+            cookie={cookie}
+            setCookie={setCookie}
           />
         );
       })}

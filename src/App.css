@@ -2,13 +2,44 @@
 
 * {
   box-sizing: border-box;
+  --marverGrey: #202020;
 }
+
+/*----HEADER--- */
+.header {
+  background-color: var(--marverGrey);
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.header > a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.header > img {
+  width: 100px;
+  height: 100px;
+}
+
+/*----SEARCH BAR--- */
+
+.SearchBar {
+  width: 100%;
+  height: 60px;
+  font-size: 20px;
+  text-align: center;
+}
+
+/*----CHARACTER SHEET--- */
 
 .characterSheet {
-  background-color: aquamarine;
+  width: 40%;
 }
 
-.characterSheet > img {
+.characterSheet img {
   width: 200px;
 }
 
@@ -18,4 +49,51 @@
 
 .comicSheet {
   background-color: cadetblue;
+}
+
+.characters-page {
+}
+
+.page-btn {
+  display: flex;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.page-btn > input {
+  width: 50px;
+  height: 25px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.main-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.main-items > div {
+  margin: 10px;
+  border: 2px solid var(--marverGrey);
+  border-radius: 10px;
+}
+
+.main-items > div > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  text-decoration: none;
+  color: var(--marverGrey);
+  text-align: center;
+}
+
+.main-items > div > a > p {
+  text-decoration: none;
+}
+
+#root {
 }

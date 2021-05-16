@@ -2,10 +2,11 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Characters from "./containers/Characters";
-import Header from "./containers/Header";
+import Header from "./Components/Header";
 import Comics from "./containers/Comics";
 import CharComicsList from "./containers/CharComicsList";
 import Favorites from "./containers/Favorites";
+import FavoritesComics from "./containers/FavoritesComics";
 import Cookies from "js-cookie";
 import axios from "axios";
 
@@ -60,6 +61,10 @@ function App() {
 
         <Route path={"/favorites"}>
           <Favorites cookie={cookie} setCookie={setCookie} />
+        </Route>
+
+        <Route path={"/favoritesComics"}>
+          <FavoritesComics />
         </Route>
 
         <Route path={"/"}>

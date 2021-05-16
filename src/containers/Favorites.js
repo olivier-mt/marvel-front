@@ -7,7 +7,7 @@ const Favorites = ({ cookie, setCookie }) => {
 
   return (
     <div>
-      <p>Favorits</p>
+      <p>Personnages favoris</p>
 
       {newTab.map((elem, index) => {
         return (

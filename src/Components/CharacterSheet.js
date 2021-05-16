@@ -59,14 +59,6 @@ const CharacterSheet = ({
 
   return (
     <div className="characterSheet" key={key} id={id}>
-      <Link to={`/comics/${id}`}>
-        <p>{name}</p>
-        <p>{cookie}</p>
-        <p>{description}</p>
-
-        <img src={picture} alt="character-picture" />
-      </Link>
-
       {toFav ? (
         <input
           type="button"
@@ -80,6 +72,13 @@ const CharacterSheet = ({
           onClick={handleAddToCookies}
         />
       )}
+
+      <Link to={`/comics/${id}`}>
+        <p>{name}</p>
+        <img src={picture} alt="character-picture" />
+
+        <p>{description}</p>
+      </Link>
     </div>
   );
 };
