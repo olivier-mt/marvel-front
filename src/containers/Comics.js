@@ -17,8 +17,8 @@ const Comics = () => {
 
   useEffect(() => {
     const newUrl = title
-      ? `http://localhost:3001/comics?skip=${skip}&title=${title}`
-      : `http://localhost:3001/comics?skip=${skip}`;
+      ? `https://marvel-oliver.herokuapp.com/comics?skip=${skip}&title=${title}`
+      : `https://marvel-oliver.herokuapp.com/comics?skip=${skip}`;
 
     setUrl(newUrl);
     try {

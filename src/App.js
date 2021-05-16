@@ -17,12 +17,14 @@ function App() {
   const [skip, setSkip] = useState(0);
   const [cookie, setCookie] = useState(Cookies.get("marvelFavorites" || 0));
 
-  const [url, setUrl] = useState(`http://localhost:3001/characters?`);
+  const [url, setUrl] = useState(
+    `https://marvel-oliver.herokuapp.com/characters?`
+  );
 
   useEffect(() => {
     const baseUrl = name
-      ? `http://localhost:3001/characters?skip=${skip}&name=${name}`
-      : `http://localhost:3001/characters?skip=${skip}`;
+      ? `https://marvel-oliver.herokuapp.com/characters?skip=${skip}&name=${name}`
+      : `https://marvel-oliver.herokuapp.com/characters?skip=${skip}`;
 
     setUrl(baseUrl);
 

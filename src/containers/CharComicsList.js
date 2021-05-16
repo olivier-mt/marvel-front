@@ -11,7 +11,7 @@ const CharComicsList = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `http://localhost:3001/comics/${characterId}`
+        `https://marvel-oliver.herokuapp.com/comics/${characterId}`
       );
 
       setData(response.data.result);
