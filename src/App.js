@@ -43,7 +43,7 @@ function App() {
     };
 
     fetchData();
-  }, [skip, url, name, cookie]);
+  }, [url, skip, name, cookie]);
 
   return isLoading ? (
     <span>isLoading</span>

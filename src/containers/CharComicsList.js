@@ -24,10 +24,11 @@ const CharComicsList = () => {
     <span>is Loading</span>
   ) : (
     <div>
-      <p>CharComicsList</p>
-      <p>{characterId}</p>
-      <p>{data.name}</p>
-      <div>
+      <p className="page-title">
+        <span>{data.name}:</span>Apparitions
+      </p>
+
+      <div className="main-items">
         {data.comics.map((elem, index) => {
           return (
             <ComicSheet

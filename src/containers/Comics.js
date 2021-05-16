@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import CharacterSheet from "../Components/CharacterSheet";
 import ComicSheet from "../Components/ComicSheet";
 import Cookies from "js-cookie";
 
@@ -41,55 +40,57 @@ const Comics = () => {
     <span>is Loading</span>
   ) : (
     <div>
-      <p>Comics page</p>
-
       {/*Search Bar*/}
 
       <input
         type="search"
-        placeholder="Trouve un comic"
+        placeholder="Trouver un Comic"
         onChange={handleOnSearch}
+        className="SearchBar"
       />
 
       {/*---*/}
+      <p className="page-title">COMICS</p>
 
       {/*Page buttons*/}
+      <div className="page-btn">
+        {skip && (
+          <input
+            type="button"
+            value="<<"
+            onClick={() => {
+              setSkip(skip - data.limit);
+            }}
+          />
+        )}
 
-      {skip && (
-        <input
-          type="button"
-          value="-"
-          onClick={() => {
-            setSkip(skip - data.limit);
-          }}
-        />
-      )}
-
-      {skip + data.limit < data.count && (
-        <input
-          type="button"
-          value="+"
-          onClick={() => {
-            setSkip(skip + data.limit);
-          }}
-        />
-      )}
-
+        {skip + data.limit < data.count && (
+          <input
+            type="button"
+            value=">>"
+            onClick={() => {
+              setSkip(skip + data.limit);
+            }}
+          />
+        )}
+      </div>
       {/*---*/}
 
-      {data.results.map((elem, index) => {
-        return (
-          <ComicSheet
-            title={elem.title}
-            picture={`${elem.thumbnail.path}.${elem.thumbnail.extension}`}
-            key={elem._id}
-            id={elem._id}
-            description={elem.description}
-            cookie={cookie}
-            setCookie={setCookie}
-          />
-        );
-      })}
+      <div className="main-items">
+        {data.results.map((elem, index) => {
+          return (
+            <ComicSheet
+              title={elem.title}
+              picture={`${elem.thumbnail.path}.${elem.thumbnail.extension}`}
+              key={elem._id}
+              id={elem._id}
+              description={elem.description}
+              cookie={cookie}
+              setCookie={setCookie}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

@@ -3,7 +3,6 @@ import CharacterSheet from "../Components/CharacterSheet";
 const Characters = ({ data, setName, skip, setSkip, cookie, setCookie }) => {
   const handleOnClickPlus = () => {
     setSkip(skip + 5);
-    // setUrl(baseUrl);
   };
 
   const handleOnClickMinus = () => {
@@ -23,7 +22,7 @@ const Characters = ({ data, setName, skip, setSkip, cookie, setCookie }) => {
       />
       {/* -------*/}
 
-      <p>characters page</p>
+      <p className="page-title">HERO MARVEL</p>
       {/* Change pages */}
       <div className="page-btn">
         {skip && (

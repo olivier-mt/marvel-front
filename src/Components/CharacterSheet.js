@@ -10,7 +10,6 @@ const CharacterSheet = ({
   id,
   cookie,
   setCookie,
-  key,
 }) => {
   const [toFav, setToFav] = useState(false);
 
@@ -48,7 +47,7 @@ const CharacterSheet = ({
 
     newCookie.map((elem, index) => {
       if (elem.id === id) {
-        newCookie.splice(index, 1);
+        return newCookie.splice(index, 1);
       }
     });
 
@@ -58,18 +57,20 @@ const CharacterSheet = ({
   };
 
   return (
-    <div className="characterSheet" key={key} id={id}>
+    <div className="characterSheet" id={id}>
       {toFav ? (
         <input
           type="button"
           value="retirer des favoris"
           onClick={handleRemoveFromCookies}
+          className="remove"
         />
       ) : (
         <input
           type="button"
           value="ajouter aux favoris"
           onClick={handleAddToCookies}
+          className="add"
         />
       )}
 

@@ -1,4 +1,4 @@
-import Cookies, { set } from "js-cookie";
+import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
 const ComicSheet = ({ title, description, picture, id, cookie, setCookie }) => {
@@ -15,7 +15,7 @@ const ComicSheet = ({ title, description, picture, id, cookie, setCookie }) => {
       });
     };
     checkFavstatus();
-  }, [cookie, toFav]);
+  }, [cookie, toFav, id]);
 
   const addToCookies = () => {
     if (cookie) {
@@ -55,29 +55,29 @@ const ComicSheet = ({ title, description, picture, id, cookie, setCookie }) => {
     });
 
     Cookies.set("favMarvelComics", newCookie);
+    setToFav(false);
 
     setCookie(JSON.stringify(newCookie));
-    setToFav(false);
   };
 
   return (
-    <div className="comicSheet">
+    <div className="characterSheet">
       {toFav ? (
         <input
           type="button"
           value="Retirer des favoris"
           onClick={removeFromCookie}
+          className="remove"
         />
       ) : (
         <input
           type="button"
           value="Ajouter aux favoris"
           onClick={addToCookies}
+          className="add"
         />
       )}
       <p>{title}</p>
-      <p>{toFav && "TO FAVV !!!"}</p>
-      <p>{Cookies.get("favMarvelComics")}</p>
       <img src={picture} alt="" />
       <p>{description}</p>
     </div>
