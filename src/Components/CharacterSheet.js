@@ -15,14 +15,14 @@ const CharacterSheet = ({
 
   useEffect(() => {
     const checkFav = () => {
-      const cookieArr = JSON.parse(cookie || "[]");
+      const cookieArr = JSON.parse(cookie);
 
       cookieArr.map((elem) => {
         return elem.id === id && setToFav(true);
       });
     };
 
-    checkFav();
+    cookie && checkFav();
   }, [cookie, id, toFav]);
 
   const handleAddToCookies = () => {

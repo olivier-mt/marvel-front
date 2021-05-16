@@ -14,7 +14,8 @@ const FavoritesComics = () => {
     console.log("newCookie", newCookie);
     setCookie(newCookie);
 
-    setCookieTab(JSON.parse(cookie));
+    setCookieTab(cookie ? JSON.parse(cookie) : []);
+
     setIsLoading(false);
   }, [cookie]);
 
@@ -25,7 +26,7 @@ const FavoritesComics = () => {
       <div>
         {isLoading ? (
           <span>Is Loading</span>
-        ) : (
+        ) : cookieTab ? (
           <div className="main-items">
             {cookieTab.map((elem) => {
               return (
@@ -40,6 +41,8 @@ const FavoritesComics = () => {
               );
             })}
           </div>
+        ) : (
+          <div></div>
         )}
       </div>
     </div>
